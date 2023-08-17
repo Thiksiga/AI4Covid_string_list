@@ -22,16 +22,11 @@ for f in csv_files_num:
     # read the csv file
     df = pd.read_csv(f)
 
-    # print the location and filename
-    # print('Location:', f)
     f_name=f.split("\\")[-1]
 
-    # # print the content
-    # print('Content:')
-    # print(df)
-    # print()
+
     numbered_cluster = df["Cluster_DBSCAN_0.0001_5"].values.tolist()        #CLUSTER NUMBER COLUMN NAME
-    # print(numbered_cluster)
+
 
     for fl in csv_files_catalog:
         fl_name=fl.split("\\")[-1]  #CATALOG FILE NAME SPLIT
@@ -39,18 +34,13 @@ for f in csv_files_num:
 
         csv_name=f_name.split("_")[0]
         catalog_name = fl_name.split("_")[0]
-        # print(csv_name)
-        # print(catalog_name)
+
         if(csv_name==catalog_name):
             numbered_cluster_copy=[]
             print(csv_name,"=",catalog_name,"----->",epsminPTS)
             df_tag=pd.read_csv(fl,header=None)
             key=df_tag.iloc[:, [0]].values.tolist()
             tag= df_tag.iloc[:, [1]].values.tolist()
-            # print(type(key[0]))
-            # print(key)
-            # print(tag)
-            # print(numbered_cluster[1])
 
             for i in range(len(numbered_cluster)):
                 # print(i,"val:=",numbered_cluster[i])
@@ -60,11 +50,7 @@ for f in csv_files_num:
 
                 else:
                     end = len(key)
-                    # print(end)
                     for j in range(end):
-                        # print("j=",j)
-                        # print("key=",(key[j][0]))
-                        # print("num_cl=",numbered_cluster[i])
                         if(numbered_cluster[i]==key[j][0]):
                             # print("tag=",tag[j-1][0])
                             numbered_cluster_copy.append(tag[j][0])
