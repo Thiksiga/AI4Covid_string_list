@@ -4,12 +4,12 @@ import os
 import glob
 import re
 
-def Create_DataFrame(key_,val_):
-    data_ = {'key_': key_,
-             'value_': val_}
-    data_df = pd.DataFrame(data_)
-    print(data_df)
-    return data_df
+# def Create_DataFrame(key_,val_):
+#     data_ = {'key_': key_,
+#              'value_': val_}
+#     data_df = pd.DataFrame(data_)
+#     print(data_df)
+#     return data_df
 
 
 path_num = "C:\AI4Covid\DATA\clusters\eps1minPTS5"   #CLUSTER DATA FOLDER PATH
@@ -56,23 +56,23 @@ for f in csv_files_num:
             for i in range(len(numbered_cluster)):
                 if(df['Date'][i]!=date_):
 
-                    #DATAFRAME FORMAT OUTPUT
-                    Create_DataFrame(TIME_STAMP,numbered_cluster_copy)
+                    # #DATAFRAME FORMAT OUTPUT
+                    # Create_DataFrame(TIME_STAMP,numbered_cluster_copy)
 
 
                     # SEPERATE LISTS OUTPUT
                     print(numbered_cluster_copy)
-                    print(TIME_STAMP)
+                    # print(TIME_STAMP)
                     date_=df['Date'][i]
                     print(date_)
 
                     #CLEARING THE LISTS
                     numbered_cluster_copy.clear()
-                    TIME_STAMP.clear()
+                    # TIME_STAMP.clear()
 
                 if(numbered_cluster[i]==-1):    #Replacing cluster number -1 (Outliers) with O_L
                     numbered_cluster_copy.append("O_L")
-                    TIME_STAMP.append(df.Time[i])
+                    # TIME_STAMP.append(df.Time[i])
 
                 else:                           #If not an outlier; replacing with the relavent tags
                     end = len(key)
@@ -80,10 +80,10 @@ for f in csv_files_num:
 
                         if(numbered_cluster[i]==key[j][0]):
                             numbered_cluster_copy.append(tag[j][0])
-                            TIME_STAMP.append(df.Time[i])
+                            # TIME_STAMP.append(df.Time[i])
 
-            Create_DataFrame(TIME_STAMP, numbered_cluster_copy)         #DATAFRAME OUTPUT
-            print(TIME_STAMP)                                           #LIST OUTPUT
+            # Create_DataFrame(TIME_STAMP, numbered_cluster_copy)         #DATAFRAME OUTPUT
+            # print(TIME_STAMP)                                           #LIST OUTPUT
             print(numbered_cluster_copy)
 
 
